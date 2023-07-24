@@ -1,26 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Quotes App</title>
-    <link rel="stylesheet" href="./CSS/all.min.css">
-    <link rel="stylesheet" href="./CSS/bootstrap.min.css">
-    <link rel="stylesheet" href="./CSS/main.css">
-</head>
-<body>
-        <div class="header mt-4" align="center">
-            <h1 >quote of the day</h1>
-            <p>Press the button below to recieve a random quote!</p>
-        
-        <button onClick="newQuote()" class="btn success">New Quote</button>
-        
-        </div>
-        
-        <div class="quotes">
-        <p id="quoteDisplay"></p>
-        </div>
-        </html>
+    <link rel="stylesheet" href="./CSS/all.min.css" />
+    <link rel="stylesheet" href="./CSS/bootstrap.min.css" />
+    <link rel="stylesheet" href="./CSS/main.css" />
+  </head>
+  <main class="w-75 mx-auto ">
+    <section class="p-3 bg-info">
+      <div class="inputs-form mb-3">
+        <label for="productName">ProductName</label>
+        <input
+          type="text"
+          class="form-control"
+          id="productName"
+          placeholder="Product Name"
+        />
+      </div>
+      <div class="inputs-form mb-3">
+        <label for="productPrice">ProductPrice</label>
+        <input
+          type="number"
+          class="form-control"
+          id="productPrice"
+          placeholder="Product Price"
+        />
+      </div>
+      <div class="inputs-form mb-3">
+        <label for="productCategory">ProductCategory</label>
+        <input
+          type="text"
+          class="form-control"
+          id="productCategory"
+          placeholder="Product Category"
+        />
+      </div>
+      <div class="inputs-form mb-3">
+        <label for="productDescription">ProductDescription</label>
+        <textarea
+          class="form-control"
+          id="productDescription"
+          placeholder="Product Description"
+        ></textarea>
+      </div>
+      <button class="add btn btn-primary w-100" id="addBtn" onclick="addProduct()">Add Product</button>
+            <button class="add btn btn-primary w-100 d-none" id="updateBtn" onclick="updateProduct()">Update Product</button>
+    </section>
+    <input id="searchInput" type="text" class="form-control my-3 w-75 mx-auto" placeholder="Search....." oninput="searchProduct()">
+    <section class="mt-4">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Index</th>
+              <th>Name</th>
+              <th>price</th>
+              <th>Category</th>
+              <th>description</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="tableData">
+           
+          </tbody>
+        </table>
+    </section>
+  </main>
+  <body>
     <script src="./JS/main.js"></script>
-</body>
+  </body>
 </html>
