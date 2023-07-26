@@ -1,99 +1,17 @@
-var productNameInput = document.getElementById("productName");
-var producPriceInput = document.getElementById("productPrice");
-var productCategoryInput = document.getElementById("productCategory");
-var productDescriptionInput = document.getElementById("productDescription");
-var searchInput = document.getElementById("searchInput");
-var updateBtn = document.getElementById("updateBtn");
-var addBtn = document.getElementById("addBtn");
-var indexUpdate=0;
+var quotes = [
+  "“Be yourself; everyone else is already taken.” ― Oscar Wilde",
+  "“I'm selfish, impatient and a little insecure. I make mistakes, I am out of control and at times hard to handle. But if you can't handle me at my worst, then you sure as hell don't deserve me at my best.” ― Marilyn Monroe",
+  "“Two things are infinite: the universe and human stupidity; and I'm not sure about the universe.” ― Albert Einstein",
+  "“A room without books is like a body without a soul.” ― Marcus Tullius Cicero",
+  "“Be who you are and say what you feel, because those who mind don't matter, and those who matter don't mind.”― Bernard M. Baruch",
+  "“You've gotta dance like there's nobody watching,Love like you'll never be hurt,Sing like there's nobody listening,And live like it's heaven on earth.”― William W. Purkey",
+  "“Be the change that you wish to see in the world.― Mahatma Gandhi",
+  "“Don’t walk in front of me… I may not follow Don’t walk behind me… I may not lead Walk beside me… just be my friend”― Albert Camus",
+ "“If you want to know what a man's like, take a good look at how he treats his inferiors, not his equals.”― J.K. Rowling",
+ "“If you tell the truth, you don't have to remember anything.”― Mark Twain",
+];
 
-var productContainer = [];
-if (localStorage.getItem("products") != null) {
-  productContainer = JSON.parse(localStorage.getItem("products"));
-  displayData();
-}
-function addProduct() {
-  var product = {
-    name: productNameInput.value,
-    price: producPriceInput.value,
-    Category: productCategoryInput.value,
-    description: productDescriptionInput.value,
-  };
-  productContainer.push(product);
-  localStorage.setItem("products", JSON.stringify(productContainer));
-  displayData();
-  clearData();
-}
-function displayData() {
-  var cartona = "";
-  for (var i = 0; i < productContainer.length; i++) {
-    cartona += ` <tr>
-        <td>${i}</td>
-        <td>${productContainer[i].name}</td>
-        <td>${productContainer[i].price}</td>
-        <td>${productContainer[i].Category}</td>
-        <td>${productContainer[i].description}</td>
-        <td>
-          <button class="btn btn-outline-warning btn-sm" onclick="setData(${i})">Update</button>
-          <button class="btn btn-outline-danger btn-sm" onclick="deleteProduct(${i})">Delete</button>
-        </td>
-      </tr>`;
-  }
-  document.getElementById("tableData").innerHTML = cartona;
-}
-function clearData() {
-  productNameInput.value = "";
-  producPriceInput.value = "";
-  productCategoryInput.value = "";
-  productDescriptionInput.value = "";
-}
-function deleteProduct(index) {
-  productContainer.splice(index, 1);
-  localStorage.setItem("products", JSON.stringify(productContainer));
-  displayData();
-}
-function searchProduct() {
-  var term = searchInput.value;
-  var cartona = "";
-  for (var i = 0; i < productContainer.length; i++) {
-    if (productContainer[i].name.toLowerCase().includes(term.toLowerCase())) {
-      cartona += ` <tr>
-        <td>${i}</td>
-        <td>${productContainer[i].name}</td>
-        <td>${productContainer[i].price}</td>
-        <td>${productContainer[i].Category}</td>
-        <td>${productContainer[i].description}</td>
-        <td>
-          <button class="btn btn-outline-warning btn-sm">Update</button>
-          <button class="btn btn-outline-danger btn-sm" onclick="deleteProduct(${i})">Delete</button>
-        </td>
-      </tr>`;
-    }
-  }
-  document.getElementById("tableData").innerHTML = cartona;
-}
-function setData(index) {
-  indexUpdate=index;
-  var currentProduct = productContainer[index];
-  productNameInput.value = currentProduct.name;
-  producPriceInput.value = currentProduct.price;
-  productCategoryInput.value = currentProduct.Category;
-  productDescriptionInput.value = currentProduct.description;
-  updateBtn.classList.remove("d-none")
-  addBtn.classList.add("d-none")
-  console.log(currentProduct);
-}
-function updateProduct(){
-var product = {
-    name: productNameInput.value,
-    price: producPriceInput.value,
-    Category: productCategoryInput.value,
-    description: productDescriptionInput.value,
-  };
-  productContainer.splice(indexUpdate,1,product)
-  localStorage.setItem("products", JSON.stringify(productContainer));
-  displayData()
-  clearData()
-    updateBtn.classList.add("d-none")
-  addBtn.classList.remove("d-none")
+function newQuote() {
+  var randomNumber = Math.floor(Math.random() * quotes.length);
+  document.getElementById("quoteDisplay").innerHTML = quotes[randomNumber];
 }

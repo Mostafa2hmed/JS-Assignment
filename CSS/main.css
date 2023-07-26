@@ -1,6 +1,64 @@
-textarea{
-    resize: none;
-    height: 120px;
-    
+body {
+  background-position: center;
+  background-size: 100%;
+  background-attachment: fixed;
 }
- 
+
+.header,
+h1,
+p {
+  color: #000;
+}
+
+h1 {
+  font-family:Impact,'Arial Narrow Bold', sans-serif;
+  font-weight: 900;
+font-size: 80px;
+margin: 50px;
+}
+
+p {
+  font-size: 40px;
+  font-family: sans-serif, Arial, Times;
+}
+
+.btn {
+  font-size: 35px;
+  border: none;
+  color: black;
+  padding: 28px;
+  cursor: pointer;
+}
+
+.success {
+  background-color: blue;
+} /* Green */
+.success:hover {
+  background-color: green;
+}
+
+
+.quotes {
+  width: 33%;
+  margin-right: auto;
+  margin-left: auto;
+  border-color: white;
+  border-style: solid;
+  padding: 20px;
+  height: auto;
+  margin-top: 10px;
+}
+
+.quotes {
+  font-size: 30px;
+  font-family: Arial;
+}
+
+span {
+  color: black;
+}
+
+.author {
+  font-size: 20px;
+  font-style: italic;
+}
